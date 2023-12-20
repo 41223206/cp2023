@@ -259,7 +259,157 @@ printf( " The size of int is %d \n", sizeof(int) );
 printf( " The size of char a is %d \n", sizeof(a) );
 }
 </pre>
-<p><img alt="" height="171" src="./../images/010-2.png" width="400"/></p><br />W13 << <a href='W13.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+<p><img alt="" height="171" src="./../images/010-2.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+void main()
+{
+char c;
+printf( "Input a char:" );
+scanf( "%c", &amp;c );
+switch( c )
+{
+case 'a':
+printf(" you pressed a ");
+break;
+case 'b':
+printf(" you pressed b ");
+break;
+case 'c':
+printf(" you pressed c ");
+break;
+default:
+printf(" not a, b, c ");
+break;
+}
+}</pre>
+<p><img alt="" height="85" src="./../images/011.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+void main()
+{
+char c;
+printf( "Input a char:" );
+scanf( "%c", &amp;c );
+switch( c )
+{
+case 'a':
+printf(" you pressed a ");
+break;
+case 'b':
+printf(" you pressed b ");
+break;
+case 'c':
+printf(" you pressed c ");
+break;
+}
+}
+</pre>
+<p><img alt="" height="87" src="./../images/012.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+void main()
+{
+int i, j;
+for ( i = 0, j = 10; i &lt; 6; i++, j++ )
+{
+printf( "i = %d, ", i );
+printf( "j = %d \n", j );
+}
+}
+</pre>
+<p><img alt="" height="187" src="./../images/013.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+void main()
+{
+int i, j;
+i = 0; j = 10; /* 迴圈外先設定初值 */
+while( i &lt; 6 )
+{
+printf( "i = %d, ", i );
+printf( "j = %d \n", j );
+i++;
+j++;
+}
+}
+</pre>
+<p><img alt="" height="346" src="./../images/014.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+int grade[5]; /* size = 5 的 array */
+int i;
+grade[0] = 75; /* 1st element */
+grade[1] = 80; /* 2nd element */
+grade[2] = 85; /* 3rd element */
+grade[3] = 70; /* 4th element */
+grade[4] = 90; /* 5th element */
+for( i = 0; i &lt; 5; i ++ )
+{
+printf("Number %d = %d\n", i, grade[ i ] );
+}
+return 0;
+}
+</pre>
+<p><img alt="" height="297" src="./../images/015.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+void main()
+{
+char *str = "Eric";
+printf( "%c", *(str+0) ); /* 也可寫 printf(“%c”,str[0] ); */
+printf( "%c", *(str+1) ); /* 也可寫 printf(“%c”,str[1] ); */
+printf( "%c", *(str+2) ); /* 也可寫 printf(“%c”,str[2] ); */
+printf( "%c", *(str+3) ); /* 也可寫 printf(“%c”,str[3] ); */
+}
+</pre>
+<p><img alt="" height="134" src="./../images/016.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+/* 印出 Hello World! Bye Bye */
+printf("Hello World! ");
+printf("Bye ");
+printf("Bye");
+return 0;
+}
+</pre>
+<p><img alt="" height="95" src="./../images/017.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main()
+{
+/* 變數宣告 */
+int a;
+int A;
+int b, c;
+a = 1;
+A = 8;
+b = 2;
+c = A - a + b; /* 先計算 A - a + b, 將結果傳會給 c */
+printf( "%d", c ); /* 以 printf 印出 c 這個整數型態的變數 */
+return 0;
+}
+</pre>
+<p><img alt="" height="149" src="./../images/018.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false"></pre>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main()
+{
+int a = 1;
+int A = 8;
+int b = 2, c;
+c = A - a + b;
+/* 輸出 a, A, b, c 到螢幕 */
+printf( "a = %d, A = %d, b = %d, c = %d ", a, A, b, c );
+return 0;
+}</pre>
+<p><img alt="" height="144" src="./../images/019.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+char x, y;
+x = 'a';
+y = (char)97;
+/* 輸出 x, y, x, 最後一個是以 ASCII 值顯示 y */
+printf( " x = %c, y = %c, ASCII of y = %d", x, y, y );
+return 0;
+}
+</pre>
+<p><img alt="" height="53" src="./../images/020.png" width="400"/></p><br />W13 << <a href='W13.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
