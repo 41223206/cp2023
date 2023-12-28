@@ -1,5 +1,6 @@
 { pkgs }: {
     deps = [
+      pkgs.libfsm
       pkgs.vim
       pkgs.openssh
       pkgs.pandoc
