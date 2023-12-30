@@ -1829,7 +1829,85 @@ return 0;
 <div class="line number139 index138 alt2"> </div>
 <div class="line number140 index139 alt1"><code class="html spaces">    </code><code class="html plain">return 0;</code></div>
 <div class="line number141 index140 alt2"><code class="html plain">}</code></div>
-<div class="line number141 index140 alt2"><code class="html plain"><img alt="" height="300" src="/images/1.png" width="400"/></code></div><h1>Brython</h1>
+<div class="line number141 index140 alt2"><code class="html plain"><img alt="" height="300" src="/images/1.png" width="400"/></code></div>
+<div class="line number141 index140 alt2">
+<div>
+<div class="syntaxhighlighter html" id="highlighter_942799">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="html plain">#include &lt;</code><code class="html keyword">stdio.h</code><code class="html plain">&gt;</code></div>
+<div class="line number2 index1 alt1"><code class="html plain">#include &lt;</code><code class="html keyword">math.h</code><code class="html plain">&gt;</code></div>
+<div class="line number3 index2 alt2"> </div>
+<div class="line number4 index3 alt1"><code class="html plain">#define TIME_STEP 0.01 // 时间步长</code></div>
+<div class="line number5 index4 alt2"><code class="html plain">#define SIMULATION_TIME 10.0 // 模拟时间</code></div>
+<div class="line number6 index5 alt1"> </div>
+<div class="line number7 index6 alt2"><code class="html plain">// 物体的参数</code></div>
+<div class="line number8 index7 alt1"><code class="html plain">#define m1 2.0</code></div>
+<div class="line number9 index8 alt2"><code class="html plain">#define m2 3.0</code></div>
+<div class="line number10 index9 alt1"><code class="html plain">#define k1 0.5</code></div>
+<div class="line number11 index10 alt2"><code class="html plain">#define k2 1.0</code></div>
+<div class="line number12 index11 alt1"><code class="html plain">#define k3 1.5</code></div>
+<div class="line number13 index12 alt2"><code class="html plain">#define c1 0.25</code></div>
+<div class="line number14 index13 alt1"><code class="html plain">#define c2 0.33</code></div>
+<div class="line number15 index14 alt2"><code class="html plain">#define c3 0.5</code></div>
+<div class="line number16 index15 alt1"><code class="html plain">#define X1_initial 1.0</code></div>
+<div class="line number17 index16 alt2"><code class="html plain">#define X2_initial -0.5</code></div>
+<div class="line number18 index17 alt1"><code class="html plain">#define V0 0.0</code></div>
+<div class="line number19 index18 alt2"> </div>
+<div class="line number20 index19 alt1"><code class="html plain">// 计算阻尼力</code></div>
+<div class="line number21 index20 alt2"><code class="html plain">double dampingForce(double c, double v) {</code></div>
+<div class="line number22 index21 alt1"><code class="html spaces">    </code><code class="html plain">return -c * v;</code></div>
+<div class="line number23 index22 alt2"><code class="html plain">}</code></div>
+<div class="line number24 index23 alt1"> </div>
+<div class="line number25 index24 alt2"><code class="html plain">// 模拟物体运动</code></div>
+<div class="line number26 index25 alt1"><code class="html plain">void simulateMotion() {</code></div>
+<div class="line number27 index26 alt2"><code class="html spaces">    </code><code class="html plain">double X1 = X1_initial;</code></div>
+<div class="line number28 index27 alt1"><code class="html spaces">    </code><code class="html plain">double X2 = X2_initial;</code></div>
+<div class="line number29 index28 alt2"><code class="html spaces">    </code><code class="html plain">double V1 = V0;</code></div>
+<div class="line number30 index29 alt1"><code class="html spaces">    </code><code class="html plain">double V2 = V0;</code></div>
+<div class="line number31 index30 alt2"> </div>
+<div class="line number32 index31 alt1"><code class="html spaces">    </code><code class="html plain">FILE *fp;</code></div>
+<div class="line number33 index32 alt2"><code class="html spaces">    </code><code class="html plain">fp = fopen("motion_data.txt", "w");</code></div>
+<div class="line number34 index33 alt1"> </div>
+<div class="line number35 index34 alt2"><code class="html spaces">    </code><code class="html plain">for (double t = 0; t &lt;= SIMULATION_TIME; t += TIME_STEP) {</code></div>
+<div class="line number36 index35 alt1"><code class="html spaces">        </code><code class="html plain">double F1 = -k1 * (X1 - 0) - c1 * (V1 - 0); // 第一个物体受到的合力</code></div>
+<div class="line number37 index36 alt2"><code class="html spaces">        </code><code class="html plain">double F2 = -k2 * (X2 - X1) - c2 * (V2 - V1); // 第二个物体受到的合力</code></div>
+<div class="line number38 index37 alt1"><code class="html spaces">        </code><code class="html plain">double F3 = -k3 * (X2 - 0) - c3 * (V2 - 0); // 第二个物体受到的合力</code></div>
+<div class="line number39 index38 alt2"> </div>
+<div class="line number40 index39 alt1"><code class="html spaces">        </code><code class="html plain">double a1 = F1 / m1; // 第一个物体的加速度</code></div>
+<div class="line number41 index40 alt2"><code class="html spaces">        </code><code class="html plain">double a2 = F2 / m2; // 第二个物体的加速度</code></div>
+<div class="line number42 index41 alt1"> </div>
+<div class="line number43 index42 alt2"><code class="html spaces">        </code><code class="html plain">// 更新速度和位置</code></div>
+<div class="line number44 index43 alt1"><code class="html spaces">        </code><code class="html plain">V1 += a1 * TIME_STEP;</code></div>
+<div class="line number45 index44 alt2"><code class="html spaces">        </code><code class="html plain">V2 += a2 * TIME_STEP;</code></div>
+<div class="line number46 index45 alt1"> </div>
+<div class="line number47 index46 alt2"><code class="html spaces">        </code><code class="html plain">X1 += V1 * TIME_STEP;</code></div>
+<div class="line number48 index47 alt1"><code class="html spaces">        </code><code class="html plain">X2 += V2 * TIME_STEP;</code></div>
+<div class="line number49 index48 alt2"> </div>
+<div class="line number50 index49 alt1"><code class="html spaces">  </code><code class="html plain">// 在文件写入时记录 m1 和 m2 的位置和速度数据</code></div>
+<div class="line number51 index50 alt2"><code class="html spaces">  </code><code class="html plain">fprintf(fp, "%lf %lf %lf %lf %lf\n", t, X1, X2, V1, V2);</code></div>
+<div class="line number52 index51 alt1"><code class="html spaces">    </code><code class="html plain">}</code></div>
+<div class="line number53 index52 alt2"> </div>
+<div class="line number54 index53 alt1"> </div>
+<div class="line number55 index54 alt2"><code class="html spaces">    </code><code class="html plain">fclose(fp);</code></div>
+<div class="line number56 index55 alt1"><code class="html plain">}</code></div>
+<div class="line number57 index56 alt2"> </div>
+<div class="line number58 index57 alt1"><code class="html plain">int main() {</code></div>
+<div class="line number59 index58 alt2"><code class="html spaces">    </code><code class="html plain">simulateMotion();</code></div>
+<div class="line number60 index59 alt1"><code class="html spaces">    </code><code class="html plain">return 0;</code></div>
+<div class="line number61 index60 alt2"><code class="html plain">}</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div><img alt="" height="300" src="/images/1233.png" width="400"/></div>
+</div><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
