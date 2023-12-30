@@ -1255,7 +1255,7 @@ void draw_roc_flag(gdImagePtr img) {
 }</pre>
 <p><img caption="false" height="267" src="/images/w152.png" width="400"/></p>
 <p><video controls="controls" height="630" width="1008">
-<source src="/imges/w152.mp4" type="video/mp4"/></video></p>
+<source src="/images/2.mp4" type="video/mp4"/></video></p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China 
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621 
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library 
@@ -1417,7 +1417,8 @@ void draw_roc_flag(gdImagePtr img) {
   }</pre>
 <p><img alt="" height="267" src="/images/下載.png" width="400"/></p>
 <p><video controls="controls" height="630" width="1008">
-<source src="/images/W15.mp4" type="video/mp4"/></video></p><h1>c_ex</h1>
+<source src="/images/W15.mp4" type="video/mp4"/></video></p>
+<h1>c_ex</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 void main()
 {
@@ -1685,7 +1686,150 @@ return 0;
 }
 </pre>
 <p><img alt="" height="53" src="/images/020.png" width="400"/></p>
-<h1>Brython</h1>
+<p></p>
+<h1>w16</h1>
+<div class="line number1 index0 alt2"><code class="html plain">#include &lt;</code><code class="html keyword">gd.h</code><code class="html plain">&gt;</code></div>
+<div class="line number2 index1 alt1"><code class="html plain">#include &lt;</code><code class="html keyword">stdio.h</code><code class="html plain">&gt;</code></div>
+<div class="line number3 index2 alt2"><code class="html plain">#include &lt;</code><code class="html keyword">math.h</code><code class="html plain">&gt;</code></div>
+<div class="line number4 index3 alt1"> </div>
+<div class="line number5 index4 alt2"><code class="html plain">#define WIDTH 800</code></div>
+<div class="line number6 index5 alt1"><code class="html plain">#define HEIGHT 600</code></div>
+<div class="line number7 index6 alt2"><code class="html plain">#define SCALE 100</code></div>
+<div class="line number8 index7 alt1"> </div>
+<div class="line number9 index8 alt2"><code class="html plain">void drawResistor(gdImagePtr im, int x1, int y, int width, int height) {</code></div>
+<div class="line number10 index9 alt1"><code class="html spaces">    </code><code class="html plain">int startX = x1 ;</code></div>
+<div class="line number11 index10 alt2"><code class="html spaces">    </code><code class="html plain">int endX = x1 + width ;</code></div>
+<div class="line number12 index11 alt1"> </div>
+<div class="line number13 index12 alt2"><code class="html spaces">    </code><code class="html plain">// 第一段直线向前走一段</code></div>
+<div class="line number14 index13 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX, y, startX + width / 4 , y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number15 index14 alt2"> </div>
+<div class="line number16 index15 alt1"><code class="html spaces">    </code><code class="html plain">// 向上45度</code></div>
+<div class="line number17 index16 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 , y, startX + width / 4 + height / 2 , y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number18 index17 alt1"> </div>
+<div class="line number19 index18 alt2"><code class="html spaces">    </code><code class="html plain">// 向下90度</code></div>
+<div class="line number20 index19 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2, y - height / 2 , startX + width / 4 + height / 2 + height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number21 index20 alt2"> </div>
+<div class="line number22 index21 alt1"><code class="html spaces">    </code><code class="html plain">// 向上90度</code></div>
+<div class="line number23 index22 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + height, y + height / 2, startX + width / 4 + height / 2 + 2 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number24 index23 alt1"> </div>
+<div class="line number25 index24 alt2"><code class="html spaces">    </code><code class="html plain">// 向下90度</code></div>
+<div class="line number26 index25 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 2 * height , y - height / 2, startX + width / 4 + height / 2 + 3 * height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number27 index26 alt2"> </div>
+<div class="line number28 index27 alt1"><code class="html spaces">    </code><code class="html plain">// 向上90度</code></div>
+<div class="line number29 index28 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 3 * height, y + height / 2 , startX + width / 4 + height / 2 + 4 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number30 index29 alt1"> </div>
+<div class="line number31 index30 alt2"><code class="html spaces">    </code><code class="html plain">// 向下90度</code></div>
+<div class="line number32 index31 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 4 * height, y - height / 2, startX + width / 4 + height / 2 + 5 * height, y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number33 index32 alt2"> </div>
+<div class="line number34 index33 alt1"><code class="html spaces">  </code><code class="html plain">// 向上45度</code></div>
+<div class="line number35 index34 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 5 * height, y + height / 2, startX + width / 4 + height / 2 + 5 * height + height / 2, y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number36 index35 alt1"> </div>
+<div class="line number37 index36 alt2"><code class="html spaces">  </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 5 * height + height / 2, y, startX + width / 4 + height / 2 + 5 * height + height / 2 +5 , y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number38 index37 alt1"><code class="html spaces">  </code> </div>
+<div class="line number39 index38 alt2"> </div>
+<div class="line number40 index39 alt1"><code class="html spaces">  </code><code class="html plain">{</code></div>
+<div class="line number41 index40 alt2"><code class="html spaces">    </code><code class="html plain">int startX = 100;</code></div>
+<div class="line number42 index41 alt1"><code class="html spaces">  </code><code class="html plain">gdImageColorAllocate(im, 0, 0, 255);</code></div>
+<div class="line number43 index42 alt2"> </div>
+<div class="line number44 index43 alt1"> </div>
+<div class="line number45 index44 alt2"><code class="html spaces">    </code><code class="html plain">// 第一段直线向前走一段</code></div>
+<div class="line number46 index45 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX, y, startX + width / 4 , y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number47 index46 alt2"> </div>
+<div class="line number48 index47 alt1"><code class="html spaces">    </code><code class="html plain">// 向上45度</code></div>
+<div class="line number49 index48 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 , y, startX + width / 4 + height / 2 , y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number50 index49 alt1"> </div>
+<div class="line number51 index50 alt2"><code class="html spaces">    </code><code class="html plain">// 向下90度</code></div>
+<div class="line number52 index51 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2, y - height / 2 , startX + width / 4 + height / 2 + height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number53 index52 alt2"> </div>
+<div class="line number54 index53 alt1"><code class="html spaces">    </code><code class="html plain">// 向上90度</code></div>
+<div class="line number55 index54 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + height, y + height / 2, startX + width / 4 + height / 2 + 2 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number56 index55 alt1"> </div>
+<div class="line number57 index56 alt2"><code class="html spaces">    </code><code class="html plain">// 向下90度</code></div>
+<div class="line number58 index57 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 2 * height , y - height / 2, startX + width / 4 + height / 2 + 3 * height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number59 index58 alt2"> </div>
+<div class="line number60 index59 alt1"><code class="html spaces">    </code><code class="html plain">// 向上45度</code></div>
+<div class="line number61 index60 alt2"><code class="html spaces">      </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 3 * height, y + height / 2, startX + width / 4 + height / 2 + 3 * height + height / 2, y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number62 index61 alt1"> </div>
+<div class="line number63 index62 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 3 * height + height / 2, y, startX + width / 4 + height / 2 + 3 * height + height / 2 +5 , y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number64 index63 alt1"><code class="html spaces"> </code><code class="html plain">}</code></div>
+<div class="line number65 index64 alt2"> </div>
+<div class="line number66 index65 alt1"><code class="html spaces">  </code><code class="html plain">{</code></div>
+<div class="line number67 index66 alt2"><code class="html spaces">    </code><code class="html plain">int startX = 585;</code></div>
+<div class="line number68 index67 alt1"><code class="html spaces">  </code><code class="html plain">gdImageColorAllocate(im, 0, 0, 255);</code></div>
+<div class="line number69 index68 alt2"> </div>
+<div class="line number70 index69 alt1"> </div>
+<div class="line number71 index70 alt2"><code class="html spaces">    </code><code class="html plain">// 第一段直线向前走一段</code></div>
+<div class="line number72 index71 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX, y, startX + width / 4 , y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number73 index72 alt2"> </div>
+<div class="line number74 index73 alt1"><code class="html spaces">    </code><code class="html plain">// 向上45度</code></div>
+<div class="line number75 index74 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 , y, startX + width / 4 + height / 2 , y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number76 index75 alt1"><code class="html spaces">    </code> </div>
+<div class="line number77 index76 alt2"><code class="html spaces">  </code><code class="html plain">// 向下90度</code></div>
+<div class="line number78 index77 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2, y - height / 2 , startX + width / 4 + height / 2 + height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number79 index78 alt2"> </div>
+<div class="line number80 index79 alt1"><code class="html spaces">    </code><code class="html plain">// 向上90度</code></div>
+<div class="line number81 index80 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + height, y + height / 2, startX + width / 4 + height / 2 + 2 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number82 index81 alt1"><code class="html spaces">        </code><code class="html plain">// 向下90度</code></div>
+<div class="line number83 index82 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 2 * height , y - height / 2, startX + width / 4 + height / 2 + 3 * height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number84 index83 alt1"> </div>
+<div class="line number85 index84 alt2"><code class="html spaces">    </code><code class="html plain">// 向上45度</code></div>
+<div class="line number86 index85 alt1"><code class="html spaces">      </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 3 * height, y + height / 2, startX + width / 4 + height / 2 + 3 * height + height / 2, y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number87 index86 alt2"><code class="html spaces">    </code> </div>
+<div class="line number88 index87 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, startX + width / 4 + height / 2 + 3 * height + height / 2, y, startX + width / 4 + height / 2 + 3 * height + height / 2 +5 , y, gdImageColorAllocate(im, 0, 0, 255));</code></div>
+<div class="line number89 index88 alt2"><code class="html spaces">    </code> </div>
+<div class="line number90 index89 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, 100, y +20, 700, y +20, gdImageColorAllocate(im, 0, 255, 0));</code></div>
+<div class="line number91 index90 alt2"> </div>
+<div class="line number92 index91 alt1"><code class="html plain">}</code></div>
+<div class="line number93 index92 alt2"><code class="html plain">}</code></div>
+<div class="line number94 index93 alt1"><code class="html spaces">  </code> </div>
+<div class="line number95 index94 alt2"><code class="html plain">int main() {</code></div>
+<div class="line number96 index95 alt1"><code class="html spaces">    </code><code class="html plain">gdImagePtr im;</code></div>
+<div class="line number97 index96 alt2"><code class="html spaces">    </code><code class="html plain">FILE *outputFile;</code></div>
+<div class="line number98 index97 alt1"> </div>
+<div class="line number99 index98 alt2"><code class="html spaces">    </code><code class="html plain">// 创建图像对象</code></div>
+<div class="line number100 index99 alt1"><code class="html spaces">    </code><code class="html plain">im = gdImageCreateTrueColor(WIDTH, HEIGHT);</code></div>
+<div class="line number101 index100 alt2"><code class="html spaces">    </code><code class="html plain">if (im == NULL) {</code></div>
+<div class="line number102 index101 alt1"><code class="html spaces">        </code><code class="html plain">fprintf(stderr, "Error creating GD image.\n");</code></div>
+<div class="line number103 index102 alt2"><code class="html spaces">        </code><code class="html plain">return 1;</code></div>
+<div class="line number104 index103 alt1"><code class="html spaces">    </code><code class="html plain">}</code></div>
+<div class="line number105 index104 alt2"> </div>
+<div class="line number106 index105 alt1"><code class="html spaces">    </code><code class="html plain">outputFile = fopen("1.png", "wb");</code></div>
+<div class="line number107 index106 alt2"><code class="html spaces">    </code><code class="html plain">if (outputFile == NULL) {</code></div>
+<div class="line number108 index107 alt1"><code class="html spaces">        </code><code class="html plain">fprintf(stderr, "Error opening the output file.\n");</code></div>
+<div class="line number109 index108 alt2"><code class="html spaces">        </code><code class="html plain">return 1;</code></div>
+<div class="line number110 index109 alt1"><code class="html spaces">    </code><code class="html plain">}</code></div>
+<div class="line number111 index110 alt2"> </div>
+<div class="line number112 index111 alt1"><code class="html spaces">    </code><code class="html plain">int black, white, red, blue, green;</code></div>
+<div class="line number113 index112 alt2"> </div>
+<div class="line number114 index113 alt1"><code class="html spaces">    </code><code class="html plain">black = gdImageColorAllocate(im, 0, 0, 0);</code></div>
+<div class="line number115 index114 alt2"><code class="html spaces">    </code><code class="html plain">white = gdImageColorAllocate(im, 255, 255, 255);</code></div>
+<div class="line number116 index115 alt1"><code class="html spaces">    </code><code class="html plain">red = gdImageColorAllocate(im, 255, 0, 0);</code></div>
+<div class="line number117 index116 alt2"><code class="html spaces">    </code><code class="html plain">blue = gdImageColorAllocate(im, 0, 0, 255);</code></div>
+<div class="line number118 index117 alt1"><code class="html plain">green = gdImageColorAllocate(im, 0, 255, 0);</code></div>
+<div class="line number119 index118 alt2"><code class="html spaces">    </code><code class="html plain">gdImageFilledRectangle(im, 0, 0, WIDTH - 1, HEIGHT - 1, white);</code></div>
+<div class="line number120 index119 alt1"> </div>
+<div class="line number121 index120 alt2"><code class="html spaces">    </code><code class="html plain">// 绘制墙面</code></div>
+<div class="line number122 index121 alt1"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, SCALE, SCALE, SCALE, HEIGHT - SCALE, black);</code></div>
+<div class="line number123 index122 alt2"><code class="html spaces">    </code><code class="html plain">gdImageLine(im, WIDTH - SCALE, SCALE, WIDTH - SCALE, HEIGHT - SCALE, black);</code></div>
+<div class="line number124 index123 alt1"> </div>
+<div class="line number125 index124 alt2"><code class="html plain">// 绘制彈簧</code></div>
+<div class="line number126 index125 alt1"><code class="html spaces">    </code><code class="html plain">drawResistor(im, WIDTH / 3 + SCALE / 2, HEIGHT / 2, SCALE / 2, SCALE / 4);</code></div>
+<div class="line number127 index126 alt2"><code class="html spaces">  </code> </div>
+<div class="line number128 index127 alt1"><code class="html spaces">    </code><code class="html plain">// 绘制质量（方形）</code></div>
+<div class="line number129 index128 alt2"><code class="html spaces">    </code><code class="html plain">gdImageFilledRectangle(im, WIDTH / 3 - SCALE / 2, HEIGHT / 2 - SCALE / 2, WIDTH / 3 + SCALE / 2, HEIGHT / 2 + SCALE / 2, red);</code></div>
+<div class="line number130 index129 alt1"><code class="html spaces">    </code><code class="html plain">gdImageFilledRectangle(im, WIDTH * 2 / 3 - SCALE / 2, HEIGHT / 2 - SCALE / 2, WIDTH * 2 / 3 + SCALE / 2, HEIGHT / 2 + SCALE / 2, red);</code></div>
+<div class="line number131 index130 alt2"> </div>
+<div class="line number132 index131 alt1"><code class="html spaces">  </code><code class="html plain">gdImageFilledRectangle(im, 100, HEIGHT +300, 700, HEIGHT /2 +49 , black);</code></div>
+<div class="line number133 index132 alt2"> </div>
+<div class="line number134 index133 alt1"><code class="html spaces">    </code> </div>
+<div class="line number135 index134 alt2"> </div>
+<div class="line number136 index135 alt1"><code class="html spaces">    </code><code class="html plain">gdImagePng(im, outputFile);</code></div>
+<div class="line number137 index136 alt2"><code class="html spaces">    </code><code class="html plain">fclose(outputFile);</code></div>
+<div class="line number138 index137 alt1"><code class="html spaces">    </code><code class="html plain">gdImageDestroy(im);</code></div>
+<div class="line number139 index138 alt2"> </div>
+<div class="line number140 index139 alt1"><code class="html spaces">    </code><code class="html plain">return 0;</code></div>
+<div class="line number141 index140 alt2"><code class="html plain">}</code></div>
+<div class="line number141 index140 alt2"><code class="html plain"><img alt="" height="300" src="/images/1.png" width="400"/></code></div><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
