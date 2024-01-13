@@ -1,5 +1,13 @@
 {
   "files": {
+    ".git/config": [
+      {
+        "id": "2287fe1a-999f-4641-a3e5-507400671c1f",
+        "line": 17,
+        "version": 70,
+        "index": 331
+      }
+    ],
     "id_rsa.pub": [
       {
         "id": "ef54ac47-0e7f-489d-b5fc-5300240b38c0",
