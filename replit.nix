@@ -1,19 +1,16 @@
-{ pkgs }: { 
-  deps = [
-    pkgs.libfsm
-    pkgs.vim 
-    pkgs.openssh 
-    pkgs.pandoc 
-    pkgs.glibcLocales 
-    pkgs.gitFull 
-    pkgs.libev 
-    pkgs.gnuplot 
-    pkgs.ncurses.dev 
-    pkgs.gd
-  ];
+{ pkgs }: {
+    deps = [
+      pkgs.pandoc
+      pkgs.glibcLocales
+      pkgs.gitFull
+      pkgs.libev
+      pkgs.gnuplot
+      pkgs.ncurses.dev
+      pkgs.gd
+    ];
   env = {
-    PYTHON_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ 
-pkgs.libev
-    ]; 
+    PYTHON_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+      pkgs.libev
+    ];
   };
 }
