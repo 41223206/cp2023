@@ -120,6 +120,44 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
    }
 }</pre>
 <p><img alt="" height="267" src="/images/roc_flag.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;</pre>
+<p style="text-align: left;">stdio.h：標準輸入輸出函數庫，用於輸出錯誤信息。</p>
+<p style="text-align: left;">gd.h：圖形函數庫，用於創建和處理圖像。</p>
+<p style="text-align: left;">math.h：數學函數庫，用於數學運算。</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red, int blue);</pre>
+<p>draw_roc_flag用來繪製ROC國旗</p>
+<p>draw_white_sun用來繪製太陽</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main() {</pre>
+<p>這是main主函數的開始，int是整數變數的關鍵</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int width = 1200;</pre>
+<p>寬為1200，長寬比為2:3，所以高為800</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);</pre>
+<p>創建彩色圖片</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./roc_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }</pre>
+<p>利用fopen函數打開文件，("wb")為二進位模式打開，return1表示程式有錯誤</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">  gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}</pre>
+<p>將gdlmage寫入PNG，img是圖片，9為壓縮級別（0為不壓縮，9為最大壓縮）</p>
+<p>fclose(outputFile)為關閉檔案</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// Colors for the flag
+red = gdImageColorAllocate(img, 242, 0, 0); // Red color
+white = gdImageColorAllocate(img, 255, 255, 255); // White stripes
+blue = gdImageColorAllocate(img, 0, 41, 204); // Blue</pre>
+<p> gdImageColorAllocate函式為紅、白、藍顏色分配</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red, int blue) {</pre>
+<p>void draw_white_sun函式繪製圖片</p>
+<p></p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_United_States
 // https://www.britannica.com/topic/flag-of-the-United-States-of-America
 // 以下為幾乎要繪製完成的美國國旗, 請修改下列原始碼, 令其繪出正確的美國國旗
@@ -1113,6 +1151,83 @@ return 1;
     return 0;
 }</pre>
 <p><img alt="" height="400" src="/images/hellogd.png" width="533"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;</pre>
+<p>stdio.h：標準輸入輸出函數庫，用於輸出錯誤信息。</p>
+<p>gd.h：圖形函數庫，用於創建和處理圖像。</p>
+<p>math.h：數學函數庫，用於數學運算。</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main() {
+    int width = 800;
+    int height = 600;</pre>
+<p>設定長為800,寬為600</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);</pre>
+<p>使用gd函數創建一個彩色圖像，並設置alpha混合</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    FILE *outputFile = fopen("hellogd.png", "wb");
+    if (outputFile == NULL) {
+  </pre>
+<p>打開二進制寫入模式的文件("hellogd.png", "wb")作為輸出文件</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    int red = gdImageColorAllocate(img, 255, 0, 0);
+    int blue = gdImageColorAllocate(img, 0, 0, 255);
+    int black = gdImageColorAllocate(img, 0, 0, 0);
+    int white = gdImageColorAllocate(img, 255, 255, 255);</pre>
+<p>使用gdImageColorAllocate函數設定紅、藍、黑、白</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImageFilledRectangle(img, 0, 0, width, height, white);
+    gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, blue);</pre>
+<p>使用gdImageFilledRectangle函數繪製兩個矩形，一個白色，一個藍色</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);</pre>
+<p>使用gdImageFilledEllipse函數繪製出一個紅色的橢圓</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);</pre>
+<p>使用gdImageEllipse繪製出一個紅色橢圓的邊框</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdPoint points[4];
+    points[0].x = (int)width/4;
+    points[0].y = (int)height*3/4;
+    points[1].x = points[0].x + 100;
+    points[1].y = points[0].y;
+    points[2].x = points[1].x;
+    points[2].y = points[1].y + 100;
+    points[3].x = points[2].x - 100;
+    points[3].y = points[2].y;
+    gdImagePolygon(img, points, 4, black);</pre>
+<p>使用gdImagePolygon繪製出一個黑色的多邊形</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <h1>W13</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 #include &lt;stdio.h&gt;
@@ -1168,7 +1283,55 @@ int main() {
     return 0;
 }</pre>
 <p><img alt="" height="400" src="/images/motion_plot.png" width="800"/></p>
-<h1>W15</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;</pre>
+<p>這裡包含標準輸出的標頭文件</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main() {
+    // Open a file to write displacement and velocity data
+    FILE *outputFile = fopen("motion_data.txt", "w");
+    if (!outputFile) {
+        fprintf(stderr, "Failed to create data file.\n");
+        return 1;
+    }</pre>
+<p>打開"motion_data.txt"寫入模式，用於儲存運動位移和速度</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // Simulate motion for 10 seconds and calculate displacement and velocity, while writing data to the file
+    double x = 0.2;  // Initial displacement
+    double v = 0.0;  // Initial velocity
+    double dt = 0.01; // Time step
+    double t = 0.0;  // Time</pre>
+<p>進行週期，10秒的運動週期，計算位移速度，同時將數據寫入文件中。這個例子中，-10.0 * x - 0.5 * v，可以改變此方程式來獲得不同的運動系統</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // Start a Gnuplot process using popen
+    FILE *gnuplotPipe = popen("gnuplot -persistent", "w");
+    if (!gnuplotPipe) {
+        fprintf(stderr, "Failed to start Gnuplot.\n");
+        return 1;
+    }</pre>
+<p>使用popen開啟Gnuplot的管道</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // Use Gnuplot plotting commands, specify font and output as PNG
+    fprintf(gnuplotPipe, "set terminal pngcairo enhanced font 'default,10' size 800,400\n");
+    fprintf(gnuplotPipe, "set output './../images/motion_plot.png'\n");
+    fprintf(gnuplotPipe, "set title 'Displacement and Velocity vs. Time'\n");
+    fprintf(gnuplotPipe, "set xlabel 'Time (s)'\n");
+    fprintf(gnuplotPipe, "set ylabel 'Displacement (m)'\n");
+    fprintf(gnuplotPipe, "plot 'motion_data.txt' using 1:2 with lines lw 2 title 'Displacement', \
+                             'motion_data.txt' using 1:3 with lines lw 2 title 'Velocity'\n");</pre>
+<p>向Gnuplot發送繪圖指令，說明繪製標題、標籤等PNG文件</p>
+<p>    // Close the Gnuplot process</p>
+<p>    fprintf(gnuplotPipe, "exit\n");</p>
+<p>    pclose(gnuplotPipe);</p>
+<p>向Gnuplot送出指令，隨後關閉通道</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p><h1>W15</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China 
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621 
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library 
@@ -1905,7 +2068,116 @@ int main() {
 <div><img alt="" height="300" src="/images/1233.png" width="400"/></div>
 <div>
 <h1>教學影片</h1>
-<h2><strong>【1.電腦輔助設計室網路設定說明】</strong></h2>
+<h2>【1.電腦輔助設計室網路設定說明】</h2>
+<p>(1)手動設定，所以關閉自動偵測設定</p>
+<p><img alt="" height="400" src="/images/1.PNG" width="703"/></p>
+<p><span>(2)手動設定IP位置</span></p>
+<p><span><img alt="" height="400" src="/images/2.PNG" width="706"/></span></p>
+<p><span>(3)在近端(電腦輔助設計教室)</span></p>
+<p><span><img alt="" height="400" src="/images/3.PNG" width="706"/></span></p>
+<p><span>(4)搜尋控制台</span></p>
+<p><span><img alt="" height="400" src="/images/4.PNG" width="708"/></span></p>
+<p><span>(5)框框虛擬 打勾實體</span></p>
+<p><span><img alt="" height="400" src="/images/5.PNG" width="700"/></span></p>
+<p><span>(6)關閉IPV4</span></p>
+<p><span><img alt="" height="400" src="/images/6.PNG" width="703"/></span></p>
+<p><span>(7)開啟IPV6</span></p>
+<p><span><img alt="" height="400" src="/images/7.PNG" width="706"/></span></p>
+<p><span>(8)設定DNS</span></p>
+<p><span><img alt="" height="400" src="/images/8.PNG" width="706"/></span></p>
+<p><span>(9)利用隨身碟批次檔案 設定網路環境</span></p>
+<p><span><img alt="" height="400" src="/images/9.PNG" width="703"/></span></p>
+<p><span>(10)放入對應檔案</span></p>
+<p><span><img alt="" height="400" src="/images/10.PNG" width="706"/></span></p>
+<p><span>(11)關閉IPV4 開啟IPV6</span></p>
+<p><span><img alt="" height="400" src="/images/11.PNG" width="710"/></span></p>
+<h2>【2. Wink 網路設定】</h2>
+<p><span>(1)</span></p>
+<p><span><img alt="" height="400" src="/images/2-1.PNG" width="644"/></span></p>
+<p><span>(2)</span></p>
+<p><span><img alt="" height="400" src="/images/2-2.PNG" width="643"/></span></p>
+<p><span>(3)</span></p>
+<p><span><img alt="" height="400" src="/images/2-3.PNG" width="645"/></span></p>
+<p><span>(4)</span></p>
+<p><span><img alt="" height="400" src="/images/2-4.PNG" width="705"/></span></p>
+<p><span>(5)</span></p>
+<p><span><img alt="" height="400" src="/images/2-5.PNG" width="703"/></span></p>
+<p><span>(6)</span></p>
+<p><span><img alt="" height="400" src="/images/2-6.PNG" width="706"/></span></p>
+<p><span>(7)</span></p>
+<p><img alt="" height="400" src="/images/2-7.PNG" width="729"/></p>
+<p><span>(8)</span></p>
+<p><img alt="" height="400" src="/images/2-8.PNG" width="688"/></p>
+<p><span>(9)</span></p>
+<p><span><img alt="" height="503" src="/images/2-9.PNG" width="800"/></span></p>
+<h2>【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】</h2>
+<p>(1)手機安裝Apps:ChatGPT, Github mobile, Replit, Authy, Teams, Onshape</p>
+<p>(2)有技巧詢問ChatGPT</p>
+<p>手機上的 Github mobile App 可用於 Github 帳號中的 2FA 流程, 幫助 Github 阻絕不當的 robot 濫用.<br/>Replit App 利用手機 Run 倉儲網站, 並以手機或平板瀏覽器管理較少量的網站編輯.<br/>Authy App 允許使用者利用手機或數位手錶取得 2FA 登入流程所需的 verification code.<br/>Teams App 利用手機參與 Microsoft 線上團隊課程.<br/>Onshape App 則可讓使用者利用手機或平面檢視或修改協同產品設計流程中的零組件.</p>
+<p>(3)在命令搜尋區輸入 cmd (command 命令提示字元), 後利用 ipconfig /all 指令取得目前的網路設定.</p>
+<p>2001開始的為外部IP.</p>
+<p>f180為內部.</p>
+<p>192.168.1為內部IPv4.</p>
+<p>利用【自動】取的IP位置可減少網路重疊.</p>
+<p>140.130.1為學校網段.</p>
+<p></p>
+<p>(4)Q:為甚麼會有兩個冒號?</p>
+<p>    A:因為總共有8個區段，中間有4個區段為0.</p>
+<p></p>
+<p>(5)Q:出現防火牆把網路關閉?</p>
+<p>     A:因為電腦中有軟體有問題被防毒軟體誤會要入侵系統才會把網路關閉</p>
+<h2>【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】</h2>
+<p><span>(1)這門課的可攜環境，雙點擊可以在近端啟動可攜程式環境.</span></p>
+<p><span><img alt="" height="400" src="/images/5-1.PNG" width="894"/></span></p>
+<p><span>(2)開啟(必須在檢視-顯示項目下勾選"副檔名"與"隱藏的項目").</span></p>
+<p><span><img alt="" height="400" src="/images/5-2.PNG" width="507"/><br/></span></p>
+<p><span>(3)會跳出4個命令</span></p>
+<p><span><img alt="" height="200" src="/images/5-3.PNG" width="1099"/></span></p>
+<p><span>(4)</span></p>
+<p><span><img alt="" height="500" src="/images/5-4.PNG" width="722"/></span></p>
+<p>(5)</p>
+<p><img alt="" height="600" src="/images/5-5.PNG" width="540"/></p>
+<p><span>(6)用 SciTE 編輯器中的 Tools - Go 功能表執行 ANSI C 程式</span></p>
+<p><span><img alt="" height="400" src="/images/5-6.PNG" width="697"/></span></p>
+<p> <span>(7)10次hello world</span></p>
+<p><img alt="" height="500" src="/images/5-7.PNG" width="734"/></p>
+<p><span>(8)清除output</span></p>
+<p><span><img alt="" height="500" src="/images/5-8.PNG" width="739"/></span></p>
+<h2>【9. Github 倉儲設定 Pages 靜態網站】</h2>
+<p><strong><span>(1)利用主分支建立網頁:Source來源/Branch分支/main主分支</span></strong></p>
+<p><strong><span><img alt="" height="400" src="/images/9-1.PNG" width="767"/></span></strong></p>
+<p><strong><span>(2)網頁根目錄</span></strong></p>
+<p><strong><span><img alt="" height="400" src="/images/9-2.PNG" width="764"/></span></strong></p>
+<p><strong><span>(3)mdecp2023.github.io/倉儲名稱</span></strong></p>
+<p><strong><span><img alt="" height="78" src="/images/9-3.PNG" width="800"/></span></strong></p>
+<p><strong><span>(4)</span></strong></p>
+<p><strong><span><img alt="" height="420" src="/images/9-4.PNG" width="800"/></span></strong></p>
+<p><strong><span>(5)網址</span></strong></p>
+<p><strong><span><img alt="" height="419" src="/images/9-5.PNG" width="800"/></span></strong></p>
+<p><strong>【10. 在 Repllit 中編譯執行 C 程式】</strong></p>
+<p><strong><span>(1)靜態</span></strong></p>
+<p><strong><span><img alt="" height="417" src="/images/10-1.PNG" width="800"/></span></strong></p>
+<p><span>(2)推送內容及進度</span></p>
+<p><img alt="" height="422" src="/images/10-2.PNG" width="800"/></p>
+<p><span>(3)創建.c</span></p>
+<p><img alt="" height="417" src="/images/10-3.PNG" width="800"/></p>
+<p><strong><span>(4)在 Shell 打Clear/cd downloads/cc gnuplot_ex1.c/./a.out</span></strong></p>
+<p><strong><span><img alt="" height="417" src="/images/10-4.PNG" width="800"/></span></strong></p>
+<p><strong><span>(5)跑出圖片</span></strong></p>
+<p><strong><img alt="" height="420" src="/images/10-5.PNG" width="800"/></strong></p>
+<p><span>(6)C++/複製程式</span></p>
+<p><span><img alt="" height="422" src="/images/10-6.PNG" width="800"/></span></p>
+<p><span>(7)貼上圖片</span></p>
+<p><span><img alt="" height="421" src="/images/10-7.PNG" width="800"/></span></p>
+<p><span>(8)推上網站</span></p>
+<p><span><img alt="" height="416" src="/images/10-8.PNG" width="800"/></span></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<h2>【1.電腦輔助設計室網路設定說明】</h2>
 <p><strong></strong></p>
 <p><strong></strong></p>
 <p><strong><span>(1)手動設定，所以關閉自動偵測設定</span></strong></p>
@@ -1914,10 +2186,11 @@ int main() {
 <p><strong><span><img alt="" height="400" src="/images/2.PNG" width="706"/></span></strong></p>
 <p><strong><span>(3)在近端(電腦輔助設計教室)</span></strong></p>
 <p><strong><span></span></strong></p>
-<p><strong><span></span></strong></p>
-<p><strong><span></span></strong></p>
-<p><strong><span></span></strong></p>
-<p><strong><span></span></strong></p>
+<h1>期末總結</h1>
+<h1>心得</h1>
+<p><strong><span></span></strong>在這堂課程中我學到了，網路設定以及為何要這麼做的理由，觸碰到了自己完全沒進入的領域，知道了我們所使用的軟體後面究竟是如何操作的，了解到英文是多麼重要且必須學習的，如何編輯網頁，如何更改等，無限循環著老師所拍攝的影片，課後老師也時常分享最近資訊趨勢是如何發展的。</p>
+<p>嘴上總是說會打程式，知道如何將圖顯示出來，但當老師期末的單獨詢問才發現，原來自己其實並不了解程式本身的含義，課後使用Chatgpt才淺淺的了解到，為何需要使用此程式，若是沒有這個程式，會形成怎麼樣的結果。</p>
+<p>因自身英文底子並不好，所以需要每條都詢問gpt去了解，或是透過老師來告知，老師常常訴說著以前學長姐的成就來提醒我們，有哪裡是我們需要加強的，學習的越細緻越不容易被取代，讓我更了解未來的科技趨勢，以及如何去面對及籌備自身技能。</p>
 <p><strong><span></span></strong></p>
 <p><strong><span></span></strong></p>
 <p><strong><span></span></strong></p>
@@ -2217,4 +2490,6 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <!-- editor2 結束 --><hr/>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p></div></div>
+</p>
+</div>
+</div>

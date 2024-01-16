@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='ANSIC.html'>ANSIC</a><li><a href='W12.html'>W12</a><li><a href='W13.html'>W13</a><li><a href='W15.html'>W15</a><li><a href='c_ex.html'>c_ex</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='教學影片.html'>教學影片</a><ul class='dropdown'><li><a href='【1.電腦輔助設計室網路設定說明】-1.html'>【1.電腦輔助設計室網路設定說明】-1</a><li><a href='【2. Wink 網路設定】.html'>【2. Wink 網路設定】</a><li><a href='【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】.html'>【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】</a><li><a href='【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】.html'>【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】</a><li><a href='【9. Github 倉儲設定 Pages 靜態網站】.html'>【9. Github 倉儲設定 Pages 靜態網站】</a><li><a href='【1.電腦輔助設計室網路設定說明】-2.html'>【1.電腦輔助設計室網路設定說明】-2</a></li></ul><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='ANSIC.html'>ANSIC</a><li><a href='W12.html'>W12</a><li><a href='W13.html'>W13</a><li><a href='W15.html'>W15</a><li><a href='c_ex.html'>c_ex</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='教學影片.html'>教學影片</a><ul class='dropdown'><li><a href='【1.電腦輔助設計室網路設定說明】-1.html'>【1.電腦輔助設計室網路設定說明】-1</a><li><a href='【2. Wink 網路設定】.html'>【2. Wink 網路設定】</a><li><a href='【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】.html'>【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】</a><li><a href='【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】.html'>【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】</a><li><a href='【9. Github 倉儲設定 Pages 靜態網站】.html'>【9. Github 倉儲設定 Pages 靜態網站】</a><li><a href='【1.電腦輔助設計室網路設定說明】-2.html'>【1.電腦輔助設計室網路設定說明】-2</a></li></ul><li><a href='期末總結.html'>期末總結</a><li><a href='心得.html'>心得</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -213,6 +213,44 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
    }
 }</pre>
 <p><img alt="" height="267" src="./../images/roc_flag.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;</pre>
+<p style="text-align: left;">stdio.h：標準輸入輸出函數庫，用於輸出錯誤信息。</p>
+<p style="text-align: left;">gd.h：圖形函數庫，用於創建和處理圖像。</p>
+<p style="text-align: left;">math.h：數學函數庫，用於數學運算。</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red, int blue);</pre>
+<p>draw_roc_flag用來繪製ROC國旗</p>
+<p>draw_white_sun用來繪製太陽</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main() {</pre>
+<p>這是main主函數的開始，int是整數變數的關鍵</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int width = 1200;</pre>
+<p>寬為1200，長寬比為2:3，所以高為800</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);</pre>
+<p>創建彩色圖片</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./roc_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }</pre>
+<p>利用fopen函數打開文件，("wb")為二進位模式打開，return1表示程式有錯誤</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">  gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}</pre>
+<p>將gdlmage寫入PNG，img是圖片，9為壓縮級別（0為不壓縮，9為最大壓縮）</p>
+<p>fclose(outputFile)為關閉檔案</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// Colors for the flag
+red = gdImageColorAllocate(img, 242, 0, 0); // Red color
+white = gdImageColorAllocate(img, 255, 255, 255); // White stripes
+blue = gdImageColorAllocate(img, 0, 41, 204); // Blue</pre>
+<p> gdImageColorAllocate函式為紅、白、藍顏色分配</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red, int blue) {</pre>
+<p>void draw_white_sun函式繪製圖片</p>
+<p></p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_United_States
 // https://www.britannica.com/topic/flag-of-the-United-States-of-America
 // 以下為幾乎要繪製完成的美國國旗, 請修改下列原始碼, 令其繪出正確的美國國旗

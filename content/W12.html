@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='ANSIC.html'>ANSIC</a><li><a href='W12.html'>W12</a><li><a href='W13.html'>W13</a><li><a href='W15.html'>W15</a><li><a href='c_ex.html'>c_ex</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='教學影片.html'>教學影片</a><ul class='dropdown'><li><a href='【1.電腦輔助設計室網路設定說明】-1.html'>【1.電腦輔助設計室網路設定說明】-1</a><li><a href='【2. Wink 網路設定】.html'>【2. Wink 網路設定】</a><li><a href='【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】.html'>【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】</a><li><a href='【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】.html'>【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】</a><li><a href='【9. Github 倉儲設定 Pages 靜態網站】.html'>【9. Github 倉儲設定 Pages 靜態網站】</a><li><a href='【1.電腦輔助設計室網路設定說明】-2.html'>【1.電腦輔助設計室網路設定說明】-2</a></li></ul><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='ANSIC.html'>ANSIC</a><li><a href='W12.html'>W12</a><li><a href='W13.html'>W13</a><li><a href='W15.html'>W15</a><li><a href='c_ex.html'>c_ex</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='教學影片.html'>教學影片</a><ul class='dropdown'><li><a href='【1.電腦輔助設計室網路設定說明】-1.html'>【1.電腦輔助設計室網路設定說明】-1</a><li><a href='【2. Wink 網路設定】.html'>【2. Wink 網路設定】</a><li><a href='【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】.html'>【4. 安裝與課程相關的 Apps, 網路設定與 ChatGPT 應用】</a><li><a href='【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】.html'>【5. 可攜程式環境的設定說明, 如何在可攜環境中編譯執行 C 程式】</a><li><a href='【9. Github 倉儲設定 Pages 靜態網站】.html'>【9. Github 倉儲設定 Pages 靜態網站】</a><li><a href='【1.電腦輔助設計室網路設定說明】-2.html'>【1.電腦輔助設計室網路設定說明】-2</a></li></ul><li><a href='期末總結.html'>期末總結</a><li><a href='心得.html'>心得</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -206,6 +206,83 @@ return 1;
     return 0;
 }</pre>
 <p><img alt="" height="400" src="./../images/hellogd.png" width="533"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;</pre>
+<p>stdio.h：標準輸入輸出函數庫，用於輸出錯誤信息。</p>
+<p>gd.h：圖形函數庫，用於創建和處理圖像。</p>
+<p>math.h：數學函數庫，用於數學運算。</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main() {
+    int width = 800;
+    int height = 600;</pre>
+<p>設定長為800,寬為600</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);</pre>
+<p>使用gd函數創建一個彩色圖像，並設置alpha混合</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    FILE *outputFile = fopen("hellogd.png", "wb");
+    if (outputFile == NULL) {
+  </pre>
+<p>打開二進制寫入模式的文件("hellogd.png", "wb")作為輸出文件</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    int red = gdImageColorAllocate(img, 255, 0, 0);
+    int blue = gdImageColorAllocate(img, 0, 0, 255);
+    int black = gdImageColorAllocate(img, 0, 0, 0);
+    int white = gdImageColorAllocate(img, 255, 255, 255);</pre>
+<p>使用gdImageColorAllocate函數設定紅、藍、黑、白</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImageFilledRectangle(img, 0, 0, width, height, white);
+    gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, blue);</pre>
+<p>使用gdImageFilledRectangle函數繪製兩個矩形，一個白色，一個藍色</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);</pre>
+<p>使用gdImageFilledEllipse函數繪製出一個紅色的橢圓</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);</pre>
+<p>使用gdImageEllipse繪製出一個紅色橢圓的邊框</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    gdPoint points[4];
+    points[0].x = (int)width/4;
+    points[0].y = (int)height*3/4;
+    points[1].x = points[0].x + 100;
+    points[1].y = points[0].y;
+    points[2].x = points[1].x;
+    points[2].y = points[1].y + 100;
+    points[3].x = points[2].x - 100;
+    points[3].y = points[2].y;
+    gdImagePolygon(img, points, 4, black);</pre>
+<p>使用gdImagePolygon繪製出一個黑色的多邊形</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <br />ANSIC << <a href='ANSIC.html'>Previous</a> <a href='W13.html'>Next</a> >> W13</div>
         
     <!-- footer -->
