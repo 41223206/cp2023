@@ -348,8 +348,431 @@ int main()
 
 </pre>
 <p><br/><img alt="" height="200" src="./../images/10.png" width="442"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt; // Include standard input/output library
+
+int test(int x, int y); // Declare the function 'test' with two integer parameters
+
+int main(void)
+{
+    // Call the function 'test' with arguments 1 and 2 and print the result
+    printf("%d", test(1, 2));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 2 and 2 and print the result
+    printf("%d", test(2, 2));
+}
+// Function definition for 'test'
+int test(int x, int y)
+{
+    // Conditional expression: If x is equal to y, return (x + y) multiplied by 3, otherwise return x + y
+    return x == y ? (x + y) * 3 : x + y;
+}</pre>
+<p><img alt="" height="112" src="./../images/a-1.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt; // Include standard input/output library
+
+int test(int n); // Declare the function 'test' with an integer parameter
+
+int main(void)
+{
+    // Call the function 'test' with argument 53 and print the result
+    printf("%d", test(53));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 30 and print the result
+    printf("%d", test(30));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 51 and print the result
+    printf("%d", test(51));
+}
+
+// Function definition for 'test'
+int test(int n)
+{
+    const int x = 51; // Declare and initialize constant variable 'x'
+
+    if (n &gt; x) // Check if 'n' is greater than 'x'
+    {
+        return (n - x) * 3; // Return the result of the expression (n - x) multiplied by 3
+    }
+
+    return x - n; // Return the result of the expression x minus n
+}</pre>
+<p><img alt="" height="112" src="./../images/a-2.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt; // Include standard input/output library
+
+int test(int x, int y); // Declare the function 'test' with two integer parameters
+
+int main(void)
+{
+    // Call the function 'test' with arguments 25 and 5, and print the result
+    printf("%d", test(25, 5));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 20 and 30, and print the result
+    printf("%d", test(20, 30));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 20 and 25, and print the result
+    printf("%d", test(20, 25));
+}
+
+// Function definition for 'test'
+int test(int x, int y)
+{
+    // Return 1 (true) if any of the following conditions are true:
+    // 1. x is equal to 30
+    // 2. y is equal to 30
+    // 3. the sum of x and y is equal to 30
+    return x == 30 || y == 30 || (x + y == 30);
+}</pre>
+<p><img alt="" height="128" src="./../images/a-3.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main() {
+    double s=0, j=1, d, i;
+
+    // Loop to calculate the series
+    for(i=1; i&lt;=7; i+=2){
+        d = (i/j);
+        s += d;
+        j = j*2;
+    }
+
+    // Print the result
+    printf("Value of series: %.2lf\n", s);
+
+    return 0;
+}</pre>
+<p><img alt="" height="119" src="./../images/a-4.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;  // Include standard input/output library
+#include &lt;stdlib.h&gt; // Include standard library for absolute value function
+
+int test(int x); // Declare the function 'test' with an integer parameter
+
+int main(void)
+{
+    // Call the function 'test' with argument 103 and print the result
+    printf("%d", test(103));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 90 and print the result
+    printf("%d", test(90));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 89 and print the result
+    printf("%d", test(89));
+}
+
+// Function definition for 'test'
+int test(int x)
+{
+    // Check if the absolute difference between 'x' and 100 is less than or equal to 10,
+    // or if the absolute difference between 'x' and 200 is less than or equal to 10.
+    // Return 1 (true) if either condition is true, otherwise return 0 (false).
+    if (abs(x - 100) &lt;= 10 || abs(x - 200) &lt;= 10)
+        return 1;
+    return 0;
+}</pre>
+<p><img alt="" height="130" src="./../images/a-5.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;  // Include standard input/output library
+#include &lt;stdlib.h&gt; // Include standard library for modulo operation
+
+int test(int n); // Declare the function 'test' with an integer parameter
+
+int main(void)
+{
+    // Call the function 'test' with argument 3 and print the result
+    printf("%d", test(3));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 14 and print the result
+    printf("%d", test(14));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 12 and print the result
+    printf("%d", test(12));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with argument 37 and print the result
+    printf("%d", test(37));
+}
+
+// Function definition for 'test'
+int test(int n)
+{
+    // Check if 'n' is divisible by 3 or if 'n' is divisible by 7.
+    // Return 1 (true) if either condition is true, otherwise return 0 (false).
+    return n % 3 == 0 || n % 7 == 0;
+}</pre>
+<p><img alt="" height="159" src="./../images/a-6.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;  // Include standard input/output library
+#include &lt;stdlib.h&gt; // Include standard library for absolute value function
+
+int test(int temp1, int temp2); // Declare the function 'test' with two integer parameters
+
+int main(void)
+{
+    // Call the function 'test' with arguments 120 and -1, and print the result
+    printf("%d", test(120, -1));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments -1 and 120, and print the result
+    printf("%d", test(-1, 120));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 2 and 120, and print the result
+    printf("%d", test(2, 120));
+}
+
+// Function definition for 'test'
+int test(int temp1, int temp2)
+{
+    // Check if either of the following conditions are true:
+    // 1. temp1 is less than 0 and temp2 is greater than 100
+    // 2. temp2 is less than 0 and temp1 is greater than 100
+    // Return 1 (true) if either condition is true, otherwise return 0 (false).
+    return temp1 &lt; 0 &amp;&amp; temp2 &gt; 100 || temp2 &lt; 0 &amp;&amp; temp1 &gt; 100;
+}</pre>
+<p><img alt="" height="123" src="./../images/a-7.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;  // Include standard input/output library
+#include &lt;stdlib.h&gt; // Include standard library for absolute value function
+
+int test(int x, int y); // Declare the function 'test' with two integer parameters
+
+int main(void)
+{
+    // Call the function 'test' with arguments 100 and 199, and print the result
+    printf("%d", test(100, 199));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 250 and 300, and print the result
+    printf("%d", test(250, 300));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 105 and 190, and print the result
+    printf("%d", test(105, 190));
+}
+
+// Function definition for 'test'
+int test(int x, int y)
+{
+    // Check if either of the following conditions are true:
+    // 1. x is between 100 and 200 (inclusive)
+    // 2. y is between 100 and 200 (inclusive)
+    // Return 1 (true) if either condition is true, otherwise return 0 (false).
+    return (x &gt;= 100 &amp;&amp; x &lt;= 200) || (y &gt;= 100 &amp;&amp; y &lt;= 200);
+}</pre>
+<p><img alt="" height="130" src="./../images/a-8.c.png" width="200"/><br/><br/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;  // Include standard input/output library
+#include &lt;stdlib.h&gt; // Include standard library for additional functions
+
+// Declare the function 'test' with three integer parameters
+int test(int x, int y, int z);
+
+int main(void)
+{
+    // Call the function 'test' with arguments 11, 20, and 12, and print the result
+    printf("%d", test(11, 20, 12));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 30, 30, and 17, and print the result
+    printf("%d", test(30, 30, 17));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 25, 35, and 50, and print the result
+    printf("%d", test(25, 35, 50));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 15, 12, and 8, and print the result
+    printf("%d", test(15, 12, 8));
+}
+
+// Function definition for 'test'
+int test(int x, int y, int z)
+{
+    // Check if either of the following conditions are true for any of the variables (x, y, or z):
+    // 1. The variable is between 20 and 50 (inclusive)
+    // Return 1 (true) if any condition is true, otherwise return 0 (false).
+    return (x &gt;= 20 &amp;&amp; x &lt;= 50) || (y &gt;= 20 &amp;&amp; y &lt;= 50) || (z &gt;= 20 &amp;&amp; z &lt;= 50);
+}</pre>
+<p><img alt="" height="152" src="./../images/a-9.c.png" width="200"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;  // Include standard input/output library
+#include &lt;stdlib.h&gt; // Include standard library for additional functions
+
+// Declare the function 'test' with two integer parameters
+int test(int x, int y);
+
+int main(void)
+{
+    // Call the function 'test' with arguments 20 and 84, and print the result
+    printf("%d", test(20, 84));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 14 and 50, and print the result
+    printf("%d", test(14, 50));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 11 and 45, and print the result
+    printf("%d", test(11, 45));
+
+    // Print a newline for formatting
+    printf("\n");
+
+    // Call the function 'test' with arguments 25 and 40, and print the result
+    printf("%d", test(25, 40));
+}
+
+// Function definition for 'test'
+int test(int x, int y)
+{
+    // Check if either of the following conditions are true:
+    // 1. x is less than or equal to 20 OR y is greater than or equal to 50
+    // 2. x is less than or equal to 20 OR y is greater than or equal to 50
+    // If any of the conditions are true, return 1 (true). Otherwise, return 0 (false).
+    return (x &lt;= 20 || y &gt;= 50) || (x &lt;= 20 || y &gt;= 50);
+}</pre>
+<p><img alt="" height="156" src="./../images/a-10.c.png" width="200"/></p>
 <p></p>
-<br />w7 << <a href='w7.html'>Previous</a> <a href='W12.html'>Next</a> >> W12</div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p><br />w7 << <a href='w7.html'>Previous</a> <a href='W12.html'>Next</a> >> W12</div>
         
     <!-- footer -->
       <div class="container">
