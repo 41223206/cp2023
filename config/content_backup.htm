@@ -1315,9 +1315,9 @@ int main() {
     fprintf(gnuplotPipe, "plot 'motion_data.txt' using 1:2 with lines lw 2 title 'Displacement', \
                              'motion_data.txt' using 1:3 with lines lw 2 title 'Velocity'\n");</pre>
 <p>向Gnuplot發送繪圖指令，說明繪製標題、標籤等PNG文件</p>
-<p>    // Close the Gnuplot process</p>
-<p>    fprintf(gnuplotPipe, "exit\n");</p>
-<p>    pclose(gnuplotPipe);</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // Close the Gnuplot process
+    fprintf(gnuplotPipe, "exit\n");
+    pclose(gnuplotPipe);</pre>
 <p>向Gnuplot送出指令，隨後關閉通道</p>
 <p></p>
 <p></p>
